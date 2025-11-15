@@ -1,0 +1,26 @@
+name: Build Android APK
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Optional: allows manual triggers
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Build with Buildozer
+      uses: artem-ryabov/buildozer-action@v1
+      with:
+        work-dir: .
+        buildozer-version: stable
+        
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-apk
+        path: bin/*.apk
