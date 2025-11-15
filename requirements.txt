@@ -1,0 +1,5 @@
+kivy==2.3.0
+kivymd==1.1.1
+pyjnius==1.4.0
+pulp==2.7.0
+numpy==1.26.0
